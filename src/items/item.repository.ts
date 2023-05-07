@@ -19,4 +19,11 @@ export class ItemRepository extends Repository<Item> {
     await this.save(item);
     return item;
   }
+
+  async updateStatus(item: Item): Promise<Item> {
+    item.status = ItemStatus.SOLD_OUT;
+    item.updatedAt = new Date();
+    await this.save(item);
+    return item;
+  }
 }
